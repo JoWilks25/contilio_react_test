@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.scss';
-import LoginPage from './pages/login/LoginPage'
+import LoginPage from './pages/login/LoginPage';
+import DashboardPage from './pages/dashboard/Dashboard';
 
 class App extends React.Component {
   constructor () {
@@ -20,7 +21,9 @@ class App extends React.Component {
     return (
       <div className="App">
         {
-         !this.state.isLoggedIn && (
+         !this.state.isLoggedIn ? 
+          (<DashboardPage />)
+         : (
            <LoginPage handleSubmit={this.setIsLoggedIn}/>
          )
         }

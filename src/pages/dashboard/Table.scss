@@ -1,0 +1,39 @@
+$width: 250px;
+$height: 30px;
+$vertAlign: middle;
+
+$darkestBlue: #215384;
+$lightestBlue: #91B9D5;
+$white: white;
+
+.HeaderRow {
+  background-color: $darkestBlue;
+  width: $width;
+  height: $height;
+  padding-left: 5px;
+  color: $white;
+  vertical-align: $vertAlign;
+}
+
+.HeaderCell {
+  background-color: $darkestBlue;
+  width: $width;
+  height: $height;
+  padding-left: 5px;
+  color: $white;
+  vertical-align: $vertAlign;
+  &:nth-child(odd) {
+    border-right: 1px solid $white;
+  }
+}
+
+.TableCell {
+  width: $width;
+  height: $height;
+  padding-left: 5px;
+  vertical-align: $vertAlign;
+  border-bottom: 1px solid $lightestBlue;
+  &:nth-child(odd) {
+    border-right: 1px solid $lightestBlue;
+  }
+}
