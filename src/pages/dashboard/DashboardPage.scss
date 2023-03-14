@@ -1,5 +1,6 @@
 $maxWidth: 1000px;
 $width: 100%;
+$height: 250px;
 $containerWidths: 450px;
 $breakpoint: 500px;
 
@@ -34,12 +35,18 @@ $black: black;
 }
 .TableContainer {
   min-width: $containerWidths;
-  // border: 1px solid red;
+  // height: $height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
 }
 
 .ChartContainer {
   min-width: $containerWidths;
-  border: 1px solid blue;
+  // height: $height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
 }

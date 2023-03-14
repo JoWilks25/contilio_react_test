@@ -11,26 +11,29 @@ class Table extends React.Component {
 
   render() {
     const { props: { tableData } } = this;
-    console.log('tableData', tableData);
     return (
-      <div className='Table'>
-        <tr className='HeaderRow'>
+      <table className='Table'>
+        <thead>
+          <tr className='HeaderRow'>
+            {
+              headerTitles.map((title) => <th key={title} className='HeaderCell'>{title}</th>)
+            }
+          </tr>
+        </thead>
+        <tbody>
           {
-            headerTitles.map((title) => <th className='HeaderCell'>{title}</th>)
+            tableData.map((dataObj) => {
+              const { name, value, unit } = dataObj;
+              return (
+                <tr key={value} className='DataRow'>
+                  <td className='TableCell'>{name}</td>
+                  <td className='TableCell'>{`${value}${unit}`}</td>
+                </tr>
+              )
+            })
           }
-        </tr>
-        {
-          tableData.attributes.map((attribute) => {
-            const { name, value } = attribute;
-            return (
-              <tr className='DataRow'>
-                <td className='TableCell'>{name}</td>
-                <td className='TableCell'>{value}</td>
-              </tr>
-            )
-          })
-        }
-      </div>
+        </tbody>
+      </table>
     )
   }
 }

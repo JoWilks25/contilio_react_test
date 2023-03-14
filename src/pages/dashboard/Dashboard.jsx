@@ -1,6 +1,7 @@
 import React from 'react'
 import './DashboardPage.scss';
 import Table from './Table';
+import HorizontalBarChart from '../../components/HorizontalBarChart';
 
 class DashboardPage extends React.Component {
   constructor() {
@@ -21,23 +22,39 @@ class DashboardPage extends React.Component {
     }).then((response) => {
       return response.json();
     }).then((data) => {
-      this.setState({ allData: data[0], tableData: data[0], title: data?.[0]?.title })
+      const { title, attributes } = data[0]
+      this.setState({ allData: data[0], tableData: attributes, title: title})
     })
   }
 
+  generateChartData() {
+    const { tableData, title } = this.state;
+    return {
+      labels: tableData?.map((datum) => `${datum.name} (${datum.unit})`),
+      datasets: [
+        {
+          label: title,
+          data: tableData?.map((datum) => datum.value),
+          borderColor: 'rgb(0, 185, 255)',
+          backgroundColor: 'rgba(0, 185, 255, 0.5)',
+        },
+      ],
+    }
+  };
+
   render() {
+    const test = this.generateChartData()
+    console.log(test);
     const { state: { tableData, title } } = this;
-    console.log('tableData', tableData);
     return (
       <div className='DashboardPage'>
         <h1>{title}</h1>
         <div className='TableChartContainer'>
-          {/* Table */}
           <div className='TableContainer'>
             {!tableData ? <span>...Loading</span> : <Table tableData={tableData} />}
           </div>
           <div className='ChartContainer'>
-            Chart goes here
+            {!tableData ? <span>...Loading</span> : <HorizontalBarChart data={test} />}
           </div>
         </div>
       </div>
