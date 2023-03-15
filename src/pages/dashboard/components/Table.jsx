@@ -4,13 +4,8 @@ import './Table.scss';
 const headerTitles = ['Name', 'Value']
 
 class Table extends React.Component {
-  constructor() {
-    super()
-    this.state = {}
-  }
-
   render() {
-    const { props: { tableData } } = this;
+    const { tableData, title } = this.props;
     return (
       <table className='Table'>
         <thead>
@@ -22,10 +17,10 @@ class Table extends React.Component {
         </thead>
         <tbody>
           {
-            tableData.map((dataObj) => {
+            tableData.map((dataObj, index) => {
               const { name, value, unit } = dataObj;
               return (
-                <tr key={value} className='DataRow'>
+                <tr key={`${title}-${name}-${value}-${index}`} className='DataRow'>
                   <td className='TableCell'>{name}</td>
                   <td className='TableCell'>{`${value}${unit}`}</td>
                 </tr>

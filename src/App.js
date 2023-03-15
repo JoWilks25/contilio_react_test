@@ -1,10 +1,10 @@
 import React from 'react'
 import './App.scss';
 import LoginPage from './pages/login/LoginPage';
-import DashboardPage from './pages/dashboard/Dashboard';
+import DashboardPage from './pages/dashboard/DashboardPage';
 
 class App extends React.Component {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       isLoggedIn: false,
@@ -16,16 +16,16 @@ class App extends React.Component {
     this.setState({ isLoggedIn: true })
   }
 
-  
-  render () {
+  render() {
+    const { setIsLoggedIn, state: { isLoggedIn } } = this;
     return (
       <div className="App">
         {
-         !this.state.isLoggedIn ? 
-          (<DashboardPage />)
-         : (
-           <LoginPage handleSubmit={this.setIsLoggedIn}/>
-         )
+          isLoggedIn ?
+            (<DashboardPage />)
+            : (
+              <LoginPage handleSubmit={setIsLoggedIn} />
+            )
         }
       </div>
     )

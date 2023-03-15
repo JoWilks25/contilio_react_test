@@ -1,7 +1,8 @@
 import React from 'react'
 import './DashboardPage.scss';
-import Table from './Table';
-import HorizontalBarChart from '../../components/HorizontalBarChart';
+import Table from './components/Table';
+import HorizontalBarChart from './components/HorizontalBarChart';
+import Range from './components/Range';
 
 class DashboardPage extends React.Component {
   constructor() {
@@ -11,6 +12,7 @@ class DashboardPage extends React.Component {
       tableData: null,
       title: '',
     }
+    this.handleRangeChange = this.handleRangeChange.bind(this)
   }
 
   componentDidMount() {
@@ -23,7 +25,7 @@ class DashboardPage extends React.Component {
       return response.json();
     }).then((data) => {
       const { title, attributes } = data[0]
-      this.setState({ allData: data[0], tableData: attributes, title: title})
+      this.setState({ allData: data, tableData: attributes, title: title })
     })
   }
 
@@ -42,20 +44,28 @@ class DashboardPage extends React.Component {
     }
   };
 
+  handleRangeChange(event) {
+    const { title, attributes } = this.state.allData[event.target.value]
+    this.setState({ tableData: attributes, title: title })
+  }
+
   render() {
-    const test = this.generateChartData()
-    console.log(test);
-    const { state: { tableData, title } } = this;
+    const { tableData, title, allData } = this.state;
     return (
       <div className='DashboardPage'>
         <h1>{title}</h1>
         <div className='TableChartContainer'>
           <div className='TableContainer'>
-            {!tableData ? <span>...Loading</span> : <Table tableData={tableData} />}
+            {!tableData ? <span>...Loading</span> : <Table tableData={tableData} title={title} />}
           </div>
           <div className='ChartContainer'>
-            {!tableData ? <span>...Loading</span> : <HorizontalBarChart data={test} />}
+            {!tableData ? <span>...Loading</span> : <HorizontalBarChart data={this.generateChartData()} />}
           </div>
+        </div>
+        <div className='RangeContainer'>
+          {!tableData 
+            ? <span>...Loading</span>
+            : <Range options={allData?.map((dataObj) => dataObj?.title)} onHandleChange={this.handleRangeChange} />}
         </div>
       </div>
     )
