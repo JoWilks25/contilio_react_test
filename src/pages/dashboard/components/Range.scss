@@ -1,0 +1,27 @@
+$width: 100%;
+$max-width: 1000px;
+$breakpoint: 500px;
+
+.RangeContainer {
+  width: $width;
+  max-width: $max-width;
+  datalist {
+    display: flex;
+    justify-content: space-between;
+    writing-mode: rl;
+    width: $width;
+    @media (max-width: $breakpoint) {
+      flex-direction: column;
+      writing-mode: vertical-lr;
+    }
+  }
+  
+  option {
+    padding: 0;
+  }
+  
+  input[type="range"] {
+    width: $width;
+  }
+
+}

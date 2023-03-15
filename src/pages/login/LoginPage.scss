@@ -1,8 +1,10 @@
-$lightestBlue: #91B9D5;
-$darkestBlue: #215384;
 $width: 250px;
 $height: 30px;
 $margin: 7.5px;
+
+$lightestBlue: #91B9D5;
+$darkestBlue: #215384;
+$black: black;
 
 .LoginPage {
   height: 50%;
@@ -14,7 +16,7 @@ $margin: 7.5px;
   padding: 0;
 
   h1 {
-    color: $darkestBlue;
+    color: $black;
     margin: $margin;
   }
 
@@ -37,7 +39,12 @@ $margin: 7.5px;
     width: $width;
     height: $height;
     margin: $margin;
+    background-color: $darkestBlue;
+    color: white;
     padding: 0;
+    &:disabled {
+      opacity: 0.5;
+    }
   }
 
 }
