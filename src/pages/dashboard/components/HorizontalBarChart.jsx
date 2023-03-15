@@ -29,7 +29,10 @@ export const options = {
   responsive: true,
 };
 
-
+/**
+ * Used a framework for the chart, as it is stable works well, 
+ * and for this task an overcustomised chart wasn't necessary
+ */
 class HorizontalBarChart extends React.Component {
   render() {
     const { options, data } = this.props

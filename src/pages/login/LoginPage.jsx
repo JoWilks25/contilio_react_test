@@ -1,13 +1,13 @@
 import React from 'react'
 import './LoginPage.scss';
 
+
 class LoginPage extends React.Component {
   constructor() {
     super()
     this.state = {
       username: '',
       password: '',
-      enableSubmitButton: false,
     }
   }
 
@@ -19,6 +19,7 @@ class LoginPage extends React.Component {
     this.props.handleSubmit()
   }
 
+  // Created this as a separate function to keep the html more readable in the render
   disableCheck = () => {
     const { username, password } = this.state
     // Keep button disabled til user entered more than 1 character into username & password input

@@ -3,6 +3,10 @@ import './App.scss';
 import LoginPage from './pages/login/LoginPage';
 import DashboardPage from './pages/dashboard/DashboardPage';
 
+/**
+ * Decided to just use simple state of triggering page change, instead of react-router
+ * However if required more pages would then include react-router
+ */
 class App extends React.Component {
   constructor() {
     super()

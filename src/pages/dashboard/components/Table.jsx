@@ -3,6 +3,10 @@ import './Table.scss';
 
 const headerTitles = ['Name', 'Value']
 
+/**
+ * Kept the table simple using the <table> etc tags, as there were 
+ * so few data points, that installing a library seemed like overkill
+ */
 class Table extends React.Component {
   render() {
     const { tableData, title } = this.props;

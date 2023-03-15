@@ -4,6 +4,20 @@ import Table from './components/Table';
 import HorizontalBarChart from './components/HorizontalBarChart';
 import Range from './components/Range';
 
+/**
+ * 
+ * I define existing states with 'null' and empty strings, so I can use
+ * a basic falsy check for determining when to render loading indicators
+ * or when to render the actual component. (Use this pattern to deal
+ * mostly with async data sourcing).
+ * 
+ * Had a scrolling issue on the x-axis, which I didn't fix as I could
+ * tell it was going to take too much time, (when you decrease the width
+ * of the page you'll see it).
+ * To offset the issue somewhat, I centre aligned the content of the tables
+ * to try minimise to some degree the content floating off to the left of 
+ * the screen.
+ */
 class DashboardPage extends React.Component {
   constructor() {
     super()
